@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacar</title>
+    <style>
+        /* Estilos CSS para replicar o visual da imagem */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        header .title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        header .icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        main {
+            padding: 20px;
+        }
+
+        .balance-card {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .balance-card .label {
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        .balance-card .amount {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .balance-card .currency-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #f39c12;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .rewards-timer {
+            background-color: #34495e;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .rewards-timer .label {
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+
+        .rewards-timer .time {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .pix-info {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pix-info .title {
+            font-weight: 500;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .pix-info .assurance {
+            font-size: 0.8rem;
+            color: #27ae60;
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .pix-info .assurance::before {
+            content: '✓';
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .withdrawal-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .withdrawal-options button {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            color: #333;
+            padding: 15px 10px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .withdrawal-options button.selected {
+            border-color: #e54b6d;
+            background-color: #fce8ec;
+            color: #e54b6d;
+        }
+        
+        .min-withdrawal-note {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .input-group select,
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+        
+        .input-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+            padding-right: 2.5rem;
+        }
+
+        .input-group input::placeholder {
+            color: #adb5bd;
+        }
+
+        .submit-btn {
+            background-color: #e54b6d;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .processing-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <header>
+            <span class="icon">&lt;</span>
+            <span class="title">Sacar</span>
+            <span class="icon">?</span>
+        </header>
+
+        <main>
+            <div class="balance-card">
+                <div class="label">Saldo Disponível</div>
+                <div class="amount">
+                    <span>R$ 599,87</span>
+                    <div class="currency-icon">P</div>
+                </div>
+            </div>
+
+            <div class="rewards-timer">
+                <span class="label">Tempo de novas recompensas:</span>
+                <span id="timer" class="time">23:53:43</span>
+            </div>
+            
+            <div class="pix-info">
+                <span class="title">PIX</span>
+                <span class="assurance">Assegurado pelo Banco Central</span>
+            </div>
+
+            <h2 class="section-title">Valor do saque</h2>
+            <div class="withdrawal-options">
+                <button class="amount-btn" data-value="10.00">R$ 10,00</button>
+                <button class="amount-btn" data-value="50.00">R$ 50,00</button>
+                <button class="amount-btn" data-value="100.00">R$ 100,00</button>
+                <button id="max-amount-btn" class="amount-btn selected" data-value="599.87">R$ 599,87</button>
+            </div>
+            <p class="min-withdrawal-note">O valor mínimo para saque é de R$10,00.</p>
+
+            <div class="input-group">
+                <label for="pix-key-type">Tipo de chave PIX</label>
+                <select id="pix-key-type">
+                    <option value="cpf">CPF</option>
+                    <option value="phone">Celular</option>
+                    <option value="email">E-mail</option>
+                    <option value="random">Chave Aleatória</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="pix-key">Chave PIX</label>
+                <input type="text" id="pix-key" placeholder="Digite seu CPF">
+            </div>
+            <a href="saque.html">
+            <button class="submit-btn">Realizar Saque</button>
+            </a>    
+
+            <p class="processing-note">O saque será processado em até 24 horas.</p>
+        </main>
+    </div>
+
+    <script>
+        // Script JavaScript para interatividade
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lógica do temporizador (countdown)
+            const timerElement = document.getElementById('timer');
+            let time = 23 * 3600 + 53 * 60 + 43; // 23:53:43 em segundos
+
+            function updateTimer() {
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+                
+                timerElement.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                
+                if (time > 0) {
+                    time--;
+                } else {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = "00:00:00";
+                }
+            }
+
+            let timerInterval = setInterval(updateTimer, 1000);
+
+            // Lógica para selecionar o valor do saque
+            const amountButtons = document.querySelectorAll('.amount-btn');
+            
+            amountButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove a classe 'selected' de todos os botões
+                    amountButtons.forEach(btn => btn.classList.remove('selected'));
+                    // Adiciona a classe 'selected' apenas ao botão clicado
+                    button.classList.add('selected');
+                });
+            });
+
+            // Lógica para mudar o placeholder do input de acordo com o tipo de chave PIX
+            const pixKeyTypeSelect = document.getElementById('pix-key-type');
+            const pixKeyInput = document.getElementById('pix-key');
+
+            pixKeyTypeSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex].text;
+                pixKeyInput.placeholder = `Digite seu ${selectedOption}`;
+            });
+            
+            // Lógica do botão de saque (simulação)
+            const submitButton = document.querySelector('.submit-btn');
+            submitButton.addEventListener('click', () => {
+                const selectedAmountButton = document.querySelector('.amount-btn.selected');
+                const pixKey = pixKeyInput.value;
+                
+                if (!selectedAmountButton) {
+                    alert('Por favor, selecione um valor para o saque.');
+                    return;
+                }
+                
+                if (!pixKey) {
+                    alert('Por favor, digite sua chave PIX.');
+                    return;
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>

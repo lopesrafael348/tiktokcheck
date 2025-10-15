@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="estilos-checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <main>
+            <div class="secure-payment-banner">
+                PAGAMENTO 100% SEGURO
+            </div>
+
+            <div class="promo-banner">
+                <div class="promo-text">
+                    <span>SEU FEEDBACK SOBRE</span>
+                    <span>O <strong>TIK TOK <span class="pay-text">PAY</span></strong> VALE DINHEIRO</span>
+                </div>
+                <div class="promo-icons">
+                    <lottie-player 
+                    src="https://lottie.host/ec8a69ec-48bb-4880-8406-c5b245547816/AndWeYKuBI.json"  
+                    background="transparent"  
+                    speed="1"  
+                    style="width: 100px; height: 100px; margin: 0 auto;"
+                    loop  
+                    autoplay>
+                </lottie-player>
+                </div>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="card summary-card">
+                    <div class="item-row">
+                        <div class="item-icon">
+                            <img src="tiktok.jpg" alt="Ícone App">
+                        </div>
+                        <span class="item-name">Taxa de Cadastro.</span>
+                    </div>
+                    <hr class="divider">
+                    <div class="total-row">
+                        <span class="total-label">Total</span>
+                        <span class="total-amount">R$ 19,90</span>
+                    </div>
+                </div>
+
+                <div class="card identification-card">
+                    <div class="card-header">
+                        <span class="card-icon-wrapper user-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <h2>Identificação</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="full-name">Nome completo</label>
+                        <input type="text" id="full-name" placeholder="Nome e sobrenome">
+                    </div>
+                </div>
+
+                <div class="card payment-card">
+                    <h2>Escolha um método de pagamento...</h2>
+                    <div class="payment-option selected">
+                        <div class="payment-details">
+                            <span class="card-icon-wrapper pix-icon">
+                                <i class="fa-brands fa-pix"></i>
+                            </span>
+                            <div class="payment-text">
+                                <span class="payment-title">Pagamento via Pix</span>
+                                <span class="payment-subtitle">Aprovação imediata.</span>
+                            </div>
+                        </div>
+                        <div class="checkmark-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <button class="pay-button" id="pay-btn">PAGAR AGORA</button>
+                <p class="terms-text">
+                    Ao finalizar o pagamento você concorda com nossos termos de uso e privacidade.
+                </p>
+            </div>
+        </main>
+    </div>
+        <script>
+        const payButton = document.getElementById('pay-btn');
+
+        payButton.addEventListener('click', () => {
+            payButton.classList.add('loading');
+            
+            payButton.innerHTML = '';
+            payButton.disabled = true;
+
+            setTimeout(() => {
+                window.location.href = 'pix-pagamento.html';
+            }, 4000);
+        });
+    </script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</body>
+</html>
