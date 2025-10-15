@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Quiz TikTok</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="app-screen">
+            <header class="app-header">
+                <img src="https://logodownload.org/wp-content/uploads/2019/08/tiktok-logo-1.png" alt="TikTok Logo" class="tiktok-logo">
+                <div class="balance-container">
+                    <span>R$</span>
+                    <span id="balance">0,00</span>
+                </div>
+            </header>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+
+            <main class="quiz-container" id="quiz-container">
+                <div id="quiz-content">
+                    <p class="question-progress" id="question-progress"></p>
+                    <h2 class="question-title" id="question-title"></h2>
+                    <div class="options-container" id="options-container">
+                    </div>
+                </div>
+            </main>
+
+            <div class="popup-overlay" id="popup-overlay">
+                <div class="popup-content">
+                    <lottie-player 
+                    src="https://lottie.host/916bf15a-10ac-40fe-9e88-c745074a155b/gzTQixifZl.json"  
+                    background="transparent"  
+                    speed="1"  
+                    style="width: 100px; height: 100px; margin: 0 auto;"
+                    loop  
+                    autoplay>
+                </lottie-player>
+                    <h2 class="popup-title">Parabéns!</h2>
+                    <p class="reward-text">+R$ <span id="reward-amount"></span></p>
+                    <p class="added-text">adicionados ao seu saldo</p>
+                    <p class="new-balance-text">Saldo atual: R$ <span id="new-balance"></span></p>
+                    <button class="popup-next-button" id="popup-next-button">Próxima pergunta...</button>
+                </div>
+            </div>
+            
+            <div class="final-popup-overlay" id="final-popup-overlay">
+                <div class="final-popup-content">
+                    <lottie-player 
+                    src="https://lottie.host/551de197-067d-4963-a822-7604ea4eca19/IhcyPNI6E5.json"  
+                    background="transparent"  
+                    speed="1"  
+                    style="width: 100px; height: 100px; margin: 0 auto;"
+                    loop  
+                    autoplay>
+                </lottie-player>
+                    <h2 class="popup-title">Parabéns!</h2>
+                    <p class="final-message">Você completou o quiz e ganhou</p>
+                    <p class="final-amount" id="final-amount">R$ 599,87</p>
+                    <p class="thanks-message">Obrigado por participar da nossa pesquisa!</p>
+                    <a href="receberrecompensa.html">
+                    <button class="reward-button">Receber recompensa</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
